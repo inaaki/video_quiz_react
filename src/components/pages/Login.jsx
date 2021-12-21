@@ -17,7 +17,7 @@ function Login() {
             type='text'
           />
           <TextInput icon='lock' placeholder='Enter password' type='password' />
-          <Button></Button>
+          <Button>Login</Button>
           <div class='info'>
             Don't have an account? <a href='signup.html'>Signup</a> instead.
           </div>
