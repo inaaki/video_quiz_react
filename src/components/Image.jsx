@@ -1,9 +1,10 @@
+/* eslint-disable jsx-a11y/alt-text */
 import classes from '../styles/Image.module.css';
 
-function Image({ src, alt }) {
+function Image(props) {
   return (
     <div className={classes.illustration}>
-      <img src={src} alt={alt} />
+      <img {...props} />
     </div>
   );
 }
