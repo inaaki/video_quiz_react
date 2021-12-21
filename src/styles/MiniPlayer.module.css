@@ -18,7 +18,7 @@
 }
 
 .open {
-  display: none;
+  display: none !important;
 }
 
 .close {
@@ -103,7 +103,7 @@
 }
 
 .floatingBtn .open {
-  display: block;
+  display: block !important;
 }
 
 .floatingBtn .close {
