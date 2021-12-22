@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/alt-text */
 import classes from '../styles/Image.module.css';
 
-function Image(props) {
+function Image({ className, ...props }) {
   return (
-    <div className={classes.illustration}>
+    <div className={className || classes.illustration}>
       <img {...props} />
     </div>
   );
