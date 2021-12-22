@@ -5,7 +5,7 @@ function Answer({ id, text }) {
   if (true) {
     const style = classes.answer + ' ' + classes.correct;
     return (
-      <label class={style} htmlFor={id}>
+      <label className={style} htmlFor={id}>
         <span>{text}</span>
         {true && <span>Correct answer</span>}
       </label>
