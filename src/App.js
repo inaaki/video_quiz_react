@@ -1,19 +1,22 @@
+import { Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
+import Home from './components/pages/Home';
+import Login from './components/pages/Login';
+import Quiz from './components/pages/Quiz';
 import Result from './components/pages/Result';
+import SignUp from './components/pages/SignUp';
 import './styles/App.css';
-// import Quiz from './components/pages/Quiz';
-// import Login from './components/pages/Login';
-// import Home from './pages/Home';
-// import SignUp from './components/pages/SignUp';
 
 function App() {
   return (
     <Layout>
-      {/* <Home /> */}
-      {/* <SignUp /> */}
-      {/* <Login /> */}
-      {/* <Quiz /> */}
-      <Result />
+      <Routes>
+        <Route exact path='/' element={<Home />} />
+        <Route exact path='/login' element={<Login />} />
+        <Route exact path='/signup' element={<SignUp />} />
+        <Route exact path='/result' element={<Result />} />
+        <Route exact path='/quiz' element={<Quiz />} />
+      </Routes>
     </Layout>
   );
 }
