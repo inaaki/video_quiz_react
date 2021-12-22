@@ -1,30 +1,29 @@
-import { useState } from 'react';
+import { useRef } from 'react';
 import img from '../images/3.jpg';
-import classes from '../styles/MiniPlayer.module.css';
+import style from '../styles/MiniPlayer.module.css';
 
 function MiniPlayer({ title, thumbnail }) {
-  const [float, setFloat] = useState(true);
+  const float = style.floatingBtn; //floatingBtn class
+  const player = useRef();
 
-  const floatBtnClass = `${classes.miniPlayer} ${
-    float ? classes.floatingBtn : ''
-  }`;
-
-  console.log(floatBtnClass);
-  console.log(float);
-
-  const toggleFloat = (e) => {
+  const open = (e) => {
     e.stopPropagation();
-    setFloat((prevState) => !prevState);
+    player.current.classList.remove(float);
+  };
+
+  const close = (e) => {
+    e.stopPropagation();
+    player.current.classList.add(float);
   };
 
   return (
-    <div className={floatBtnClass} onClick={toggleFloat}>
-      <span className={`material-icons-outlined ${classes.open}`}>
+    <div ref={player} onClick={open} className={`${style.miniPlayer} ${float}`}>
+      <span className={`material-icons-outlined ${style.open}`}>
         play_circle_filled
       </span>
       <span
-        className={`material-icons-outlined ${classes.close}`}
-        onClick={toggleFloat}
+        onClick={close}
+        className={`material-icons-outlined ${style.close}`}
       >
         close
       </span>
