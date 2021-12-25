@@ -42,7 +42,7 @@ h4 {
 
 .error {
   background-color: var(--dangerRed);
-  padding: 0.6rem 1.2rem;
+  padding: 0.2rem 1.2rem;
   margin-top: 10px;
   border-radius: 8px;
   display: flex;
@@ -61,8 +61,8 @@ h4 {
   }
 }
 .signup {
-  height: 500px;
+  min-height: 500px;
 }
 .login {
-  height: 330px;
+  min-height: 330px;
 }
