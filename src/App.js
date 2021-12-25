@@ -5,17 +5,42 @@ import Login from './components/pages/Login';
 import Quiz from './components/pages/Quiz';
 import Result from './components/pages/Result';
 import SignUp from './components/pages/SignUp';
+import PrivateRoute from './components/routes/PrivateRoute';
 import './styles/App.css';
 
 function App() {
   return (
-  <Layout>
+    <Layout>
       <Routes>
-        <Route exact path='/' element={<Home />} />
+        <Route
+          exact
+          path='/'
+          element={
+            <PrivateRoute>
+              <Home />
+            </PrivateRoute>
+          }
+        />
         <Route exact path='/login' element={<Login />} />
         <Route exact path='/signup' element={<SignUp />} />
-        <Route exact path='/result' element={<Result />} />
-        <Route exact path='/quiz' element={<Quiz />} />
+        <Route
+          exact
+          path='/result'
+          element={
+            <PrivateRoute>
+              <Result />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path='/quiz'
+          element={
+            <PrivateRoute>
+              <Quiz />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </Layout>
   );
