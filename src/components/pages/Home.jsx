@@ -6,7 +6,7 @@ function Home() {
   const length = videos.length;
 
   return length ? (
-    <Videos {...videos} />
+    <Videos videos={videos} />
   ) : (
     <p style={{ textAlign: 'center' }}>{err}</p>
   );
