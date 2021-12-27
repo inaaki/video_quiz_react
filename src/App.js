@@ -13,16 +13,7 @@ function App() {
   return (
     <Layout>
       <Routes>
-        <Route
-          exact
-          path='/'
-          element={
-            <PrivateRoute>
-              <Home />
-            </PrivateRoute>
-          }
-        />
-
+        <Route exact path='/' element={<Home />} />
         <Route
           exact
           path='/login'
