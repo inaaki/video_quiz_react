@@ -1,4 +1,4 @@
-import Link from '../hoc/ToQuiz';
+import {Link} from 'react-router-dom';
 import classes from '../styles/Videos.module.css';
 import Video from './Video';
 
