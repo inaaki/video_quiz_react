@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import classes from '../styles/Videos.module.css';
 import Video from './Video';
 
-function Videos({ videos, hasMore }) {
+function Videos({ hasMore, videos, loading }) {
   return (
     <>
       <div className={classes.videos}>
@@ -16,6 +16,18 @@ function Videos({ videos, hasMore }) {
           )
         )}
       </div>
+      
+      {loading && (
+        <p
+          style={{
+            padding: '1rem 0',
+            textAlign: 'center'
+          }}
+        >
+          loading...
+        </p>
+      )}
+
       {!hasMore && (
         <p style={{ textAlign: 'center' }}>
           End of the page!! | visit later for more content

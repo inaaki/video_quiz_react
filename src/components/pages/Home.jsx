@@ -23,7 +23,7 @@ function Home() {
         removeWindowOnscroll();
       } else if (
         window.innerHeight + window.scrollY >=
-          document.body.offsetHeight - 500 &&
+          document.body.offsetHeight - 100 &&
         setPageCallCount
       ) {
         console.log('if');
@@ -38,7 +38,10 @@ function Home() {
 
   return (
     <>
-      {videos.length > 0 && <Videos videos={videos} hasMore={hasMore} />}
+      {loading && videos.length === 0 && <p>loading...</p>}
+      {videos.length > 0 && (
+        <Videos loading={loading} videos={videos} hasMore={hasMore} />
+      )}
       {err && <p style={{ textAlign: 'center' }}>{err}</p>}
     </>
   );
