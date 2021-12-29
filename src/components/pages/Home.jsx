@@ -9,7 +9,7 @@ function Home() {
 
   useEffect(() => {
     //set page only once if only the video length change
-    let setPageCallCount = 1;
+    let setPageCallCount = true;
 
     const { remove: removeWindowOnscroll } = addEvent(
       window,
@@ -19,15 +19,13 @@ function Home() {
 
     function onScroll() {
       if (!hasMore) {
-        console.log('else');
         removeWindowOnscroll();
       } else if (
         window.innerHeight + window.scrollY >=
           document.body.offsetHeight - 100 &&
         setPageCallCount
       ) {
-        console.log('if');
-        setPageCallCount -= 1;
+        setPageCallCount = false;
         setPage((prevPage) => prevPage + 1);
       }
     }

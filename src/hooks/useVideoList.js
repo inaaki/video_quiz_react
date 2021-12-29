@@ -32,21 +32,20 @@ function useVideoList(page, perPage) {
       return onValue(
         videoQuery,
         (snapshot) => {
-          //important: to set loading state to false
-          setLoading(false);
-          //
           if (snapshot.exists()) {
-            console.log('data called');
+            console.log('video list data called');
             const videos = Object.values(snapshot.val());
             setVideos((prevVideos) => [...prevVideos, ...videos]);
           } else {
             setHasMore(false);
           }
+          //important: to set loading state to false
+          setLoading(false);
         },
         (error) => {
           //on error actions
-          setLoading(false);
           setErr(error.message);
+          setLoading(false);
         },
         //this options reads data only first time
         { onlyOnce: true }
