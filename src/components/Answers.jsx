@@ -1,19 +1,18 @@
 import classes from '../styles/Answers.module.css';
 import Answer from './Answer';
 
-function Answers({ children }) {
+function Answers({ children, options, ...rest }) {
   return (
     <div className={classes.answers}>
-      <Answer id={1} text='A new hope 1' />
-      <Answer id={1} text='A new hope 1' />
-      <Answer id={1} text='A new hope 1' />
-      <Answer id={1} text='A new hope 1' />
-      <Answer id={1} text='A new hope 1' />
-      <Answer id={1} text='A new hope 1' />
-      <Answer id={1} text='A new hope 1' />
-      <Answer id={1} text='A new hope 1' />
-      <Answer id={1} text='A new hope 1' />
-      <Answer id={1} text='A new hope 1' />
+      {options.map((option, index) => (
+        <Answer
+          key={index}
+          index={index}
+          text={option.title}
+          checked={option.checked}
+          {...rest}
+        />
+      ))}
     </div>
   );
 }

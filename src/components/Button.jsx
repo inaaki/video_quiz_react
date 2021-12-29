@@ -1,9 +1,9 @@
 import classes from '../styles/Button.module.css';
 
-function Button({ children, ...rest }) {
+function Button({ className, children, ...rest }) {
   return (
-    <button {...rest} className={classes.button}>
-      <span>{children}</span>
+    <button className={classes.button + ' ' + className} {...rest}>
+      {children}
     </button>
   );
 }

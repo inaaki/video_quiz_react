@@ -1,7 +1,8 @@
-function Checkbox({ className, text, ...rest }) {
+function Checkbox({ className, text, onChange, index, ...rest }) {
   return (
     <label className={className}>
-      <input type='checkbox' {...rest}  /> <span>{text}</span>
+      <input type='checkbox' onChange={(e) => onChange(e, index)} {...rest} />{' '}
+      <span>{text}</span>
     </label>
   );
 }
