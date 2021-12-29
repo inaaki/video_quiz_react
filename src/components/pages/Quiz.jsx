@@ -11,8 +11,9 @@ import ProgressBar from '../ProgressBar';
 
 function Quiz() {
   const navigate = useNavigate();
+  const videoID = useLocation().state;
   const { currentUser } = useAuth();
-  const { quiz, loading } = useQuizList(useLocation().state);
+  const { quiz, loading } = useQuizList(videoID);
   const [localQuiz, setLocalQuiz] = useState([]);
   const [currentQuiz, setCurrentQuiz] = useState(0);
 
@@ -51,7 +52,7 @@ function Quiz() {
 
     //save to cloud
     const db = getDatabase();
-    const dbRef = ref(db, `/results/${uid}`);
+    const dbRef = ref(db, `/results/${uid}/${videoID}`);
     try {
       await set(dbRef, localQuiz);
     } catch (e) {}
