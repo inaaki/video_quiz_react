@@ -1,7 +1,33 @@
-function Checkbox({ className, text, onChange, index, ...rest }) {
+function Checkbox({
+  analysisClass,
+  checked,
+  defaultClass,
+  defaultChecked,
+  index,
+  onChange,
+  text,
+  ...rest
+}) {
   return (
-    <label className={className}>
-      <input type='checkbox' onChange={(e) => onChange(e, index)} {...rest} />{' '}
+    <label className={defaultClass + ' ' + analysisClass}>
+      
+      {/* choosing between controlled and uncontrolled */}
+      {onChange ? (
+        <input
+          checked={checked}
+          onChange={(e) => onChange(e, index)}
+          type='checkbox'
+          {...rest}
+        />
+      ) : (
+        <input
+          defaultChecked={defaultChecked}
+          disabled
+          type='checkbox'
+          {...rest}
+        />
+      )}
+
       <span>{text}</span>
     </label>
   );
