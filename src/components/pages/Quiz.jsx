@@ -60,7 +60,10 @@ function Quiz() {
 
     //direct to result page
     //direct data to the next page
-    navigate('/result', { replace: true, state: localQuiz });
+    navigate(`/result/${id}`, {
+      replace: true,
+      state: { data: localQuiz }
+    });
   };
 
   return (
