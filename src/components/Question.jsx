@@ -1,15 +1,15 @@
 import style from '../styles/Question.module.css';
 import Answers from './Answers';
-function Question() {
+function Question({  question }) {
+
   return (
     <div className={style.question}>
       <div className={style.qtitle}>
         <span className='material-icons-outlined'> help_outline </span>
-        {/* question title below */}
-        Here goes the question from Learn with Sumit?
+        {question.title}
       </div>
 
-      <Answers />
+      <Answers options={question.options} />
     </div>
   );
 }
