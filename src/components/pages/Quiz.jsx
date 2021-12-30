@@ -1,7 +1,7 @@
 import { getDatabase, ref, set } from 'firebase/database';
 import _ from 'lodash/lang';
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import useQuizList from '../../hooks/useQuizList';
 import getPercentage from '../../utils/getPercentage';
@@ -11,9 +11,10 @@ import ProgressBar from '../ProgressBar';
 
 function Quiz() {
   const navigate = useNavigate();
-  const videoID = useLocation().state;
+  const { id } = useParams();
+
   const { currentUser } = useAuth();
-  const { quiz, loading } = useQuizList(videoID);
+  const { quiz, loading } = useQuizList(id);
   const [localQuiz, setLocalQuiz] = useState([]);
   const [currentQuiz, setCurrentQuiz] = useState(0);
 
@@ -52,7 +53,7 @@ function Quiz() {
 
     //save to cloud
     const db = getDatabase();
-    const dbRef = ref(db, `/results/${uid}/${videoID}`);
+    const dbRef = ref(db, `/results/${uid}/${id}`);
     try {
       await set(dbRef, localQuiz);
     } catch (e) {}

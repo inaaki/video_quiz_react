@@ -8,7 +8,7 @@ function Videos({ hasMore, videos, loading }) {
       <div className={classes.videos}>
         {videos.map(({ youtubeID, noq, ...rest }) =>
           noq ? (
-            <Link to='/quiz' key={youtubeID} state={youtubeID}>
+            <Link to={`/quiz/${youtubeID}`} key={youtubeID}>
               <Video noq={noq} {...rest} id={youtubeID} />
             </Link>
           ) : (
