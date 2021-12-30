@@ -34,19 +34,19 @@ function App() {
         />
         <Route
           exact
-          path='/result'
+          path='/quiz/:id'
           element={
             <PrivateRoute>
-              <Result />
+              <Quiz />
             </PrivateRoute>
           }
         />
         <Route
           exact
-          path='/quiz/:id'
+          path='/result/:id'
           element={
             <PrivateRoute>
-              <Quiz />
+              <Result />
             </PrivateRoute>
           }
         />
