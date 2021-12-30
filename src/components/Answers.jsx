@@ -1,15 +1,28 @@
+import Checkbox from '../components/Checkbox';
 import classes from '../styles/Answers.module.css';
-import Answer from './Answer';
 
-function Answers({ children, options, ...rest }) {
+function getClassName(checked, isThisCorrect) {
+  return checked === true && isThisCorrect === true
+    ? classes.correct
+    : checked !== isThisCorrect
+    ? classes.wrong
+    : '';
+}
+
+function Answers({ options, ...rest }) {
+
+  console.log(getClassName(true,true))
   return (
     <div className={classes.answers}>
       {options.map((option, index) => (
-        <Answer
+        <Checkbox
           key={index}
+          checked={option.checked}
+          defaultChecked={option.checked}
+          defaultClass={classes.answer}
+          analysisClass={getClassName(option.checked, option.correct)}
           index={index}
           text={option.title}
-          checked={option.checked}
           {...rest}
         />
       ))}
