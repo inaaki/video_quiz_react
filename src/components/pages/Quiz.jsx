@@ -1,7 +1,7 @@
 import { getDatabase, ref, set } from 'firebase/database';
 import _ from 'lodash/lang';
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import useQuizList from '../../hooks/useQuizList';
 import getPercentage from '../../utils/getPercentage';
@@ -10,6 +10,7 @@ import MiniPlayer from '../MiniPlayer';
 import ProgressBar from '../ProgressBar';
 
 function Quiz() {
+  const { state } = useLocation();
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -84,7 +85,7 @@ function Quiz() {
             submit={submitResult}
           />
 
-          <MiniPlayer id={id} title={localQuiz[currentQuiz]?.title} />
+          <MiniPlayer id={id} title={state.videoTitle} />
         </>
       )}
     </>

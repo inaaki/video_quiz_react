@@ -6,13 +6,23 @@ function Videos({ hasMore, videos, loading }) {
   return (
     <>
       <div className={classes.videos}>
-        {videos.map(({ youtubeID, noq, ...rest }) =>
+        {videos.map(({ youtubeID, noq, title, ...rest }) =>
           noq ? (
-            <Link to={`/quiz/${youtubeID}`} key={youtubeID}>
-              <Video noq={noq} {...rest} id={youtubeID} />
+            <Link
+              to={`/quiz/${youtubeID}`}
+              key={youtubeID}
+              state={{ videoTitle: title }}
+            >
+              <Video noq={noq} title={title} id={youtubeID} {...rest} />
             </Link>
           ) : (
-            <Video key={youtubeID} noq={noq} {...rest} id={youtubeID} />
+            <Video
+              key={youtubeID}
+              title={title}
+              noq={noq}
+              {...rest}
+              id={youtubeID}
+            />
           )
         )}
       </div>
