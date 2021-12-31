@@ -3,7 +3,6 @@ import classes from '../styles/ProgressBar.module.css';
 import Button from './Button';
 
 function ProgressBar({ progress, prev, next, submit }) {
-  console.log(progress);
   return (
     <div className={classes.progressBar}>
       <Button className={btnStyle.backButton} onClick={prev}>
@@ -25,7 +24,7 @@ function ProgressBar({ progress, prev, next, submit }) {
         className={btnStyle.next}
         onClick={progress !== 100 ? next : submit}
       >
-        <span>Next Question</span>
+        <span>{progress === 100 ? 'Result' : 'Next Question'}</span>
         <span className='material-icons-outlined'> arrow_forward </span>
       </Button>
       {/* </Link> */}
