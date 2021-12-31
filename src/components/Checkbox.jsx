@@ -1,16 +1,17 @@
 function Checkbox({
-  analysisClass,
   checked,
-  defaultClass,
   defaultChecked,
+  defaultClass,
   index,
+  modifyBackground,
   onChange,
   text,
   ...rest
 }) {
   return (
-    <label className={defaultClass + ' ' + analysisClass}>
-      
+    <label
+      className={defaultClass + ' ' + (!onChange ? modifyBackground() : '')}
+    >
       {/* choosing between controlled and uncontrolled */}
       {onChange ? (
         <input
@@ -27,7 +28,6 @@ function Checkbox({
           {...rest}
         />
       )}
-
       <span>{text}</span>
     </label>
   );
