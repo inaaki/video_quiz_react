@@ -9,7 +9,6 @@ function Account() {
   const handleLogout = () => {
     logout()
       .then(() => {
-        console.log('im in then');
         navigate('/login');
       })
       .catch((e) => {

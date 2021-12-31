@@ -17,7 +17,6 @@ function useAnswer(id) {
       try {
         const snapshot = await get(quizRef);
         if (snapshot.exists()) {
-          console.log('data called');
           setAnswer([...snapshot.val()]);
         }
         //**important**: to set loading state to false

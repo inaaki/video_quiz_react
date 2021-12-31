@@ -33,7 +33,6 @@ function useVideoList(page, perPage) {
         videoQuery,
         (snapshot) => {
           if (snapshot.exists()) {
-            console.log('video list data called');
             const videos = Object.values(snapshot.val());
             setVideos((prevVideos) => [...prevVideos, ...videos]);
           } else {

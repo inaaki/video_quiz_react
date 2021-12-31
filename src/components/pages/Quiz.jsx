@@ -27,8 +27,6 @@ function Quiz() {
   }, [quiz]);
 
   const handleChange = (e, idx) => {
-    console.log('im in handle change');
-
     const newQuiz = _.cloneDeep(localQuiz);
     newQuiz[currentQuiz].options[idx].checked = e.target.checked;
     setLocalQuiz(newQuiz);

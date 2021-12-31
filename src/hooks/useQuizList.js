@@ -17,7 +17,6 @@ function useQuizList(id) {
       try {
         const snapshot = await get(quizRef);
         if (snapshot.exists()) {
-          console.log('data called');
           setQuizList((prev) => [...snapshot.val()]);
         }
         //important: to set loading state to false

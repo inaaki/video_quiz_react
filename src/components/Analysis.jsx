@@ -2,7 +2,6 @@ import style from '../styles/Analysis.module.css';
 import Question from './Question';
 
 function Analysis({ questions }) {
-  console.log('inside analysis', questions);
   return (
     <div className={style.analysis}>
       <h1>Question Analysis</h1>
