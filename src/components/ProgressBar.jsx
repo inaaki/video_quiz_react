@@ -1,8 +1,24 @@
+import { useRef, useState } from 'react';
 import btnStyle from '../styles/Button.module.css';
 import classes from '../styles/ProgressBar.module.css';
 import Button from './Button';
 
 function ProgressBar({ progress, prev, next, submit }) {
+  const [tooltip, setToolTip] = useState(false);
+  const tooltipRef = useRef();
+
+  const toggleTooltip = () => {
+    if (tooltip) {
+      tooltipRef.current.style.display = 'none';
+      setToolTip(!tooltip);
+    } else {
+      tooltipRef.current.style.display = 'block';
+      tooltipRef.current.style.left = `calc(${progress}% - 65px)`;
+      setToolTip(!tooltip);
+    }
+    
+  };
+
   return (
     <div className={classes.progressBar}>
       <Button className={btnStyle.backButton} onClick={prev}>
@@ -10,8 +26,14 @@ function ProgressBar({ progress, prev, next, submit }) {
       </Button>
 
       <div className={classes.rangeArea}>
-        <div className={classes.tooltip}>{progress}% Complete!</div>
-        <div className={classes.rangeBody}>
+        <div className={classes.tooltip} ref={tooltipRef}>
+          {progress}% Complete!
+        </div>
+        <div
+          className={classes.rangeBody}
+          onMouseOut={toggleTooltip}
+          onMouseOver={toggleTooltip}
+        >
           <div
             className={classes.progress}
             style={{ width: progress + '%' }}
