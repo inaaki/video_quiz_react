@@ -3,11 +3,9 @@ import classes from '../styles/Answers.module.css';
 
 //return specified className to modify background
 function modifyBg(user, result) {
-  return user && result
-    ? classes.correct
-    : user !== result
-    ? classes.wrong
-    : '';
+  let x = ' ' + classes.cursorDefault + ' ';
+  x += user && result ? classes.correct : user !== result ? classes.wrong : '';
+  return x;
 }
 
 function Answers({ options, ...rest }) {

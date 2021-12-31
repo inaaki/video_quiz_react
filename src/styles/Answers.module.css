@@ -52,3 +52,7 @@
   background: var(--dangerRed) !important;
   font-weight: 600;
 }
+
+.cursorDefault {
+  cursor: default;
+}

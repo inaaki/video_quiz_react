@@ -9,9 +9,7 @@ function Checkbox({
   ...rest
 }) {
   return (
-    <label
-      className={defaultClass + ' ' + (!onChange ? modifyBackground() : '')}
-    >
+    <label className={defaultClass + (!onChange ? modifyBackground() : '')}>
       {/* choosing between controlled and uncontrolled */}
       {onChange ? (
         <input
