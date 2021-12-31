@@ -8,6 +8,7 @@ function MiniPlayer({ title, thumbnail, id }) {
   const playerRef = useRef();
   const videoUrl = `https://www.youtube.com/watch?v=${id}`;
 
+  //floating btn toggler function
   const open = (e) => {
     e.stopPropagation();
     playerRef.current.classList.remove(float);
