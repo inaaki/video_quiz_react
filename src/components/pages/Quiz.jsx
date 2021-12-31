@@ -84,7 +84,7 @@ function Quiz() {
             submit={submitResult}
           />
 
-          <MiniPlayer title={localQuiz[currentQuiz]?.title} />
+          <MiniPlayer id={id} title={localQuiz[currentQuiz]?.title} />
         </>
       )}
     </>

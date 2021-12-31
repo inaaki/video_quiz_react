@@ -109,3 +109,6 @@
 .floatingBtn .close {
   display: none;
 }
+.floatingBtn .player {
+  display: none;
+}

@@ -1,23 +1,30 @@
-import { useRef } from 'react';
-import img from '../images/3.jpg';
+import { useRef, useState } from 'react';
+import ReactPlayer from 'react-player/youtube';
 import style from '../styles/MiniPlayer.module.css';
 
-function MiniPlayer({ title, thumbnail }) {
+function MiniPlayer({ title, thumbnail, id }) {
+  const [playing, setPlaying] = useState(false);
   const float = style.floatingBtn; //floatingBtn class
-  const player = useRef();
+  const playerRef = useRef();
+  const videoUrl = `https://www.youtube.com/watch?v=${id}`;
 
   const open = (e) => {
     e.stopPropagation();
-    player.current.classList.remove(float);
+    playerRef.current.classList.remove(float);
+    setPlaying(!playing);
   };
-
   const close = (e) => {
     e.stopPropagation();
-    player.current.classList.add(float);
+    playerRef.current.classList.add(float);
+    setPlaying(!playing);
   };
 
   return (
-    <div ref={player} onClick={open} className={`${style.miniPlayer} ${float}`}>
+    <div
+      ref={playerRef}
+      onClick={open}
+      className={`${style.miniPlayer} ${float}`}
+    >
       <span className={`material-icons-outlined ${style.open}`}>
         play_circle_filled
       </span>
@@ -27,7 +34,15 @@ function MiniPlayer({ title, thumbnail }) {
       >
         close
       </span>
-      <img src={thumbnail || img} alt='Video thumbnail' />
+      <ReactPlayer
+        className={style.player}
+        url={videoUrl}
+        width={'100%'}
+        height={'200px'}
+        controls={true}
+        volume={0.2}
+        playing={playing}
+      />
       <p>{title}</p>
     </div>
   );
