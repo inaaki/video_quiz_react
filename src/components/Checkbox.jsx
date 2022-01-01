@@ -25,7 +25,7 @@ function Checkbox({
           type='checkbox'
           {...rest}
         />
-      )}
+      )}{' '}
       <span>{text}</span>
     </label>
   );
