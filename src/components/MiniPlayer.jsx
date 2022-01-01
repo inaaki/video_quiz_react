@@ -37,12 +37,12 @@ function MiniPlayer({ title, thumbnail, id }) {
       </span>
       <ReactPlayer
         className={style.player}
+        controls={true}
+        height={'200px'}
+        muted={true}
+        playing={playing}
         url={videoUrl}
         width={'100%'}
-        height={'200px'}
-        controls={true}
-        volume={0.2}
-        playing={playing}
       />
       <p>{title}</p>
     </div>
