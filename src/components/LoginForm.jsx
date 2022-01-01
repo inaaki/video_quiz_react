@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import btnStyle from '../styles/Form.module.css';
 import Button from './Button';
 import Form from './Form';
 import FormError from './FormError';
@@ -27,7 +28,7 @@ function LoginForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, pass } = form;
-    
+
     setLoading(true);
     login(email, pass)
       .then(() => {
@@ -56,7 +57,7 @@ function LoginForm() {
         type='password'
         onChange={handleChange}
       />
-      <Button type='submit' disabled={loading}>
+      <Button className={btnStyle.button} type='submit' disabled={loading}>
         Login
       </Button>
 

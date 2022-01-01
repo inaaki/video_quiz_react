@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import btnStyle from '../styles/Form.module.css';
 import Button from './Button';
 import Checkbox from './Checkbox';
 import Form from './Form';
@@ -90,7 +91,7 @@ function SignupForm() {
         value={form.agree}
         onChange={handleChange}
       />
-      <Button type='submit' disabled={loading}>
+      <Button className={btnStyle.button} type='submit' disabled={loading}>
         Submit now
       </Button>
       {err && <FormError text={err} />}
