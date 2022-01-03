@@ -53,7 +53,7 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route path='/404' element={<NoPageFound />} />
+          <Route exact path='/404' element={<NoPageFound />} />
           <Route path='*' element={<NoPageFound />} />
         </Routes>{' '}
       </VideoListProvider>
