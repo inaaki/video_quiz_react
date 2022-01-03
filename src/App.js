@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
+import NoPageFound from './components/NoPageFound';
 import Home from './components/pages/Home';
 import Login from './components/pages/Login';
 import Quiz from './components/pages/Quiz';
@@ -52,6 +53,8 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route path='/404' element={<NoPageFound />} />
+          <Route path='*' element={<NoPageFound />} />
         </Routes>{' '}
       </VideoListProvider>
     </Layout>
