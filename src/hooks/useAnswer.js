@@ -18,6 +18,8 @@ function useAnswer(id) {
         const snapshot = await get(quizRef);
         if (snapshot.exists()) {
           setAnswer([...snapshot.val()]);
+        } else {
+          setErr('No Answer Found');
         }
         //**important**: to set loading state to false
         setLoading(false);
