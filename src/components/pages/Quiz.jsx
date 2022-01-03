@@ -61,7 +61,7 @@ function Quiz() {
     //direct data to the next page
     navigate(`/result/${id}`, {
       replace: true,
-      state: { data: localQuiz }
+      state: { questions: localQuiz }
     });
   };
 
