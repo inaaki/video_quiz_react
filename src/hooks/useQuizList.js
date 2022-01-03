@@ -1,7 +1,9 @@
 import { get, getDatabase, ref } from 'firebase/database';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function useQuizList(id) {
+  const navigate = useNavigate();
   const [err, setErr] = useState('');
   const [loading, setLoading] = useState(true);
   const [quiz, setQuizList] = useState([]);
@@ -18,6 +20,8 @@ function useQuizList(id) {
         const snapshot = await get(quizRef);
         if (snapshot.exists()) {
           setQuizList((prev) => [...snapshot.val()]);
+        } else {
+          return navigate('/404', { replace: true });
         }
         //important: to set loading state to false
         setLoading(false);
@@ -29,7 +33,7 @@ function useQuizList(id) {
     }
 
     fetchQuiz();
-  }, [id]);
+  }, [id,navigate]);
 
   return {
     err,
