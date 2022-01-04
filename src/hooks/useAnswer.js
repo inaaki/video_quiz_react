@@ -1,14 +1,19 @@
 import { get, getDatabase, ref } from 'firebase/database';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function useAnswer(id) {
+function useAnswer(id, state) {
+  const navigate = useNavigate();
   const [err, setErr] = useState('');
   const [loading, setLoading] = useState(true);
   const [answer, setAnswer] = useState([]);
 
   useEffect(() => {
-    async function fetchQuiz() {
-      //changing loading state to true
+    //handling invalid routing 
+    if (!state) return navigate('/404', { replace: true });
+
+    //declaring IIFE to get data for valid routing
+    (async function () {
       setLoading(true);
       //
       const db = getDatabase();
@@ -21,17 +26,13 @@ function useAnswer(id) {
         } else {
           setErr('No Answer Found');
         }
-        //**important**: to set loading state to false
         setLoading(false);
       } catch (error) {
-        //on error actions
         setErr(error.message);
         setLoading(false);
       }
-    }
-
-    fetchQuiz();
-  }, [id]);
+    })();
+  }, [id, state, navigate]);
 
   return {
     err,

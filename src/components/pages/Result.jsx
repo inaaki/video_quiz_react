@@ -10,11 +10,11 @@ const POINTSperQUESTION = 5;
 //
 //
 const calculateResult = (questions, answer, POINTSperQUESTION = 5) => {
-  if (answer.length <= 0)
+  if (!answer.length || !questions.length)
     return {
       score: 0,
-      totalScore: questions.length * POINTSperQUESTION,
-      questions
+      totalScore: 0,
+      questions: []
     };
 
   let correctAnswer = questions.length;
@@ -23,7 +23,7 @@ const calculateResult = (questions, answer, POINTSperQUESTION = 5) => {
     let questionOptions = questionClone[i].options;
     let answerOptions = answer[i].options;
 
-    //creating correct property in result array
+    //creating correct property in result's array
     //based on answer
     for (let i = 0; i < questionOptions.length; i++) {
       //creating correct property to calculate score
@@ -49,22 +49,22 @@ const calculateResult = (questions, answer, POINTSperQUESTION = 5) => {
 
 export default function Result() {
   const { id } = useParams();
-  const { data } = useLocation().state;
+  const { state } = useLocation();
 
-  //states inside hooks
-  const { answer, loading, err } = useAnswer(id);
+  // passing location state to useAnswer hook
+  // to handle >>invalid routing<< to this component
+  const { answer, loading, err } = useAnswer(id, state);
 
   const { score, totalScore, questions } = calculateResult(
-    data,
+    state?.questions,
     answer,
     POINTSperQUESTION
   );
-
   return (
     <>
       {loading && <p>loading...</p>}
-      {err && <p>There was an error.</p>}
-      {!loading && !err && questions.length > 0 && (
+      {err && <p>{err}</p>}
+      {!loading && !err && questions?.length > 0 && (
         <>
           <Summary score={score} totalScore={totalScore} />
           <Analysis questions={questions} />
