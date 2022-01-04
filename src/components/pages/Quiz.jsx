@@ -55,7 +55,9 @@ function Quiz() {
     const dbRef = ref(db, `/results/${uid}/${id}`);
     try {
       await set(dbRef, localQuiz);
-    } catch (e) {}
+    } catch (e) {
+      console.log('error on save result');
+    }
 
     //direct to result page
     //direct data to the next page
