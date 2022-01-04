@@ -1,19 +1,12 @@
 import { useEffect } from 'react';
-import { useVideoList } from '../../context/VideoListContext';
 import addEvent from '../../utils/eventListener';
 import Videos from '../Videos';
 
-function Home() {
-  const { loading, videos, hasMore, err, incrementPage } = useVideoList();
-
+function Home({ loading, videos, hasMore, err, incrementPage }) {
   useEffect(() => {
     //set page only once if only the video length change
     let setPageCallCount = true;
-    const { remove: removeWindowOnscroll } = addEvent(
-      window,
-      'scroll',
-      onScroll
-    );
+    //
     function onScroll() {
       if (!hasMore) {
         removeWindowOnscroll();
@@ -23,12 +16,17 @@ function Home() {
         setPageCallCount
       ) {
         setPageCallCount = false;
-        incrementPage((prevPage) => prevPage + 1);
+        incrementPage();
       }
     }
-
+    const { remove: removeWindowOnscroll } = addEvent(
+      window,
+      'scroll',
+      onScroll
+    );
     //removing existing listener on unmount and useEffect cleanup
     return removeWindowOnscroll;
+    //
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasMore, videos.length]);
 
